@@ -138,7 +138,7 @@ Create a collection via the [Collections API](https://solr.apache.org/guide/8_8/
 
 ```bash
 # Execute the Collections API command
-curl "http://default-example-solrcloud.ing.local.domain/admin/collections?action=CREATE&name=mycoll&numShards=1&replicationFactor=3&maxShardsPerNode=2&collection.configName=_default"
+curl "http://default-example-solrcloud.ing.local.domain/solr/admin/collections?action=CREATE&name=mycoll&numShards=1&replicationFactor=3&maxShardsPerNode=2&collection.configName=_default"
 
 # Check in Admin UI that collection is created
 open "http://default-example-solrcloud.ing.local.domain/solr/#/~cloud?view=graph"
@@ -148,7 +148,7 @@ Now index some documents into the empty collection.
 ```bash
 curl -XPOST -H "Content-Type: application/json" \
     -d '[{id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}, {id: 6}, {id: 7}, {id: 8}]' \
-    "http://default-example-solrcloud.ing.local.domain/solr/mycoll/update/"
+    "http://default-example-solrcloud.ing.local.domain/solr/mycoll/update?commit=true"
 ```
 
 ## Scale from 3 to 5 nodes
